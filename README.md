@@ -1,14 +1,17 @@
-# Nerfies
+# QueryCAD: Grounded Question Answering for CAD Models
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains source code for the [QueryCAD website](https://claudius-kienle.github.io/querycad/).
 
-If you find Nerfies useful for your work please cite:
+If you find QueryCAD useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@article{kienle2024querycad,
+	title        = {QueryCAD: Grounded Question Answering for CAD Models},
+	author       = {Claudius Kienle and Benjamin Alt and Darko Katic and Rainer Jäkel},
+	year         = 2024,
+	url          = {https://arxiv.org/abs/2409.08704},
+	eprint       = {2409.08704},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.RO}
 }
 ```
 
