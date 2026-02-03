@@ -3,6 +3,7 @@
 ![Segmentation](./shape.png)
 
 Official implementation for reproducing the results from the paper **"QueryCAD: Grounded Question Answering for CAD Models"**.
+Website to the paper: https://claudius-kienle.github.io/papers/p/querycad.html
 
 ## Installation
 
