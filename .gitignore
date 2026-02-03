@@ -1,0 +1,120 @@
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor-specific files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+*.pyd
+*.node
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Distribution directories
+dist/
+out/
+build/
+target/
+
+# Logs and databases
+*.log
+*.sqlite
+*.log*
+*.sql
+*.sqlite3
+
+# Environment files
+/env
+.env
+.env.local
+.env.*.local
+
+# OS generated files
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# macOS
+*.DS_Store
+
+# Node.js
+npm-debug.log
+yarn-error.log
+
+# Compiled Python files
+**/__pycache__/
+
+# PyInstaller
+build/
+dist/
+
+# virtualenv
+venv/
+env/
+ENV/
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+*.sublime-settings
+*.sublime-keymap
+
+# PlatformIO
+.pio/
+lib/
+test/
+test_*_result.txt
+
+# Anything you want to ignore
+*.bak
+*.config
+
+/data
+/weights
+
+*.egg-info
+
+/out
+# pixi environments
+.pixi
+*.egg-info

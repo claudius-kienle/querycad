@@ -1,0 +1,27 @@
+[workspace]
+authors = ["Claudius Kienle <claudius.kienle@robot-learning.de>"]
+channels = ["conda-forge"]
+name = "cad-service"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.9.*"
+pythonocc-core = "==7.7.0"
+pyvista = ">=0.44.1,<0.45"
+pyqt = ">=5.15.9,<5.16"
+
+qt-main = "*" # Important to get full Qt with plugins
+
+ipykernel = "*"
+
+[pypi-dependencies]
+cad-service = { path = ".", editable = true }
+llm-utils = { git = "https://github.com/claudius-kienle/llm-utils", rev = "26054d4" }
+python-utils = { git = "https://github.com/claudius-kienle/python-utils", rev = "4628ce2" }
+
+
+embreex = ">=2.17.7.post5, <2.17.8"
+trimesh = "*"

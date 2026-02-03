@@ -1,0 +1,147 @@
+<data>
+    <message role="system">
+        You are an assistant to write code to query information about a cad object.
+        All measurements are provided in meters. Your code should also work in meters.
+        In your response, always include all steps and don't skip steps already given in previous messages
+        You can assume width is x, depth is y and height is z axis.
+        Ensure that diameters and radius are respected correctly.
+        Ensure to multiply the `half_extents` by 2 to to get the height, width or depth of a element.
+        If you are asked for precise measurements, provide comparisons with a precision of up to one-tenth of a millimeter (0.1 mm). Round the variables to that precision if required for comparion.
+        Save your result in a variable called `solution`.  
+</message>
+    <message role="user">
+        <content type="text">
+You can use following python classes and functions in you code.  The implementation is hidden.
+Do not use any other custom functions.
+```python
+@dataclass
+class Shape:
+    """the cad shape"""
+    
+    """shape center in x, y, and z direction in meters"""
+    center: Tuple[float, float, float]
+
+    """shape size (half-width, half-depth, half-height) from the center to the edge in meters"""
+    half_extents: Tuple[float, float, float]
+
+@dataclass
+class Face:
+    """a face of a cad object"""
+
+    """form of face (either plane or cylinder)"""
+    type: str 
+
+    """if the face is a cylinder, this property returns the radius of the cylinder"""
+    radius: Optional[float]
+
+@dataclass
+class Part:
+    """a part of the cad object"""
+    
+    """part center in x, y, and z direction in meters"""
+    center: Tuple[float, float, float]
+
+    """part size (half-width, half-depth, half-height) from the center to the edge in meters"""
+    half_extents: Tuple[float, float, float]
+
+    """sides the part is visible on (list containing 'top', 'bottom', 'left', 'right', 'front', 'back')"""
+    sides: List[str]
+
+    """the cad surfaces that makes up the part"""
+    faces: List[Face]
+
+def get_parts_by_instruction(shape: Shape, instruction: str, sides: Optional[List[str]] = None) -> List[Part]:
+    """get parts of a shape that looks like `instruction` and optional side the part must be visible on 
+
+    :param shape: the cad shape
+    :param instruction: free text instruction specifying optical properties of the part, empty string to select everything
+    :param sides: the sides of the object the part is visible from (list of top, bottom, left, right, front, back), None to search on all sides
+    """
+    pass
+```
+If you need information about the object itself, directly access the variable `shape`.
+```python
+shape: Shape
+```
+        </content>
+    </message>
+    <message role="user">
+What is the part that look like a shaft and has a radius of 6 millimeters?
+
+Let's think step by step
+    </message>
+    <message role="assistant">
+First, we have to select all parts that look like a `shaft`. 
+```python
+filtered_parts = get_parts_by_instruction(shape, "shaft")
+```
+
+Next, we need to iterate over those parts
+```python
+possible_parts = []
+for filtered_part in filtered_parts:
+    # We only select the parts that have a cylindrical face with a radius of 6 millimeters
+    # We need to convert 6 millimeters into meters first
+    radius_threshold = 6 / 1000
+    if any(round(face.radius, 4) == round(radius_threshold, 4) for face in filtered_part.faces if face.type == "cylinder"):
+        # all parts that match the users instruction get added to `possible_parts`
+        possible_parts.append(filtered_part)
+```
+
+finally, we will save the answer into `solution`
+```python
+solution = possible_parts
+```
+    </message>
+    <message role="user">
+What is the radius of each hole with a bevel visible from the right side?
+
+Let's think step by step
+    </message>
+    <message role="assistant">
+We need to first fetch all parts that look like a hole with a bevel and are visible from the `right`.
+```python
+hole_parts = get_parts_by_instruction(shape, "holes with a bevel", sides=["right"])
+```
+
+For each part visible from the right side, we determine the maximum radius one of its cylindrical faces has.
+```python
+radii = []
+for part in hole_parts:
+    hole_radii = [face.radius for face in part.faces if face.type == "cylinder"]
+    if len(hole_radii) > 0:
+        radii.append(max(hole_radii))
+```
+
+Store the list of radii in the variable solution.
+```python
+solution = radii
+```
+    </message>
+    <message role="user">
+What is the position of the screw?
+
+Let's think step by step
+    </message>
+    <message role="assistant">
+First, we retrieve all screws visible on the shape.
+```python
+screw_parts = get_parts_by_instruction(shape, "screws")
+```
+
+For each screw, we compute its center position.
+```python
+screw_positions = [screw.center for screw in screw_parts]
+```
+
+Finally, we store the screw positions in the variable solution.
+```python
+solution = screw_positions
+```
+    </message>
+    <message role="user">
+{instruction}
+
+Let's think step by step
+    </message>
+</data>

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[project]
+name = "cad-service"
+version = "1.0"
+dependencies = [
+    # 'numpy==1.19.5', # 1.26.4
+    'matplotlib==3.9.4',
+    "pyvista",
+    "tqdm",
+    'distinctipy',
+    'torch==2.2.2',
+    'jaal',
+    'hierarchical-cadnet @ git+https://gitlab.com/Claudi12213/hierarchical-cadnet',
+    "tensorflow",
+    # 'typing_extensions==4.11.0', # 4.12.2
+    "llm-utils",
+    "dotenv",
+    'python-utils',
+    'webcolors==1.13',
+    'keras==3.2.1',
+    'keras-nightly',
+]
+
+[tool.pyright]
+exclude = ["3rdparty"]
